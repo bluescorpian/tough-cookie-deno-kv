@@ -6,9 +6,9 @@
 	"configurations": [
 		{
 			"request": "launch",
-			"name": "Launch Program",
+			"name": "Debug Store Test",
 			"type": "node",
-			"program": "${workspaceFolder}/mod_test.ts",
+			"program": "${workspaceFolder}/store_test.ts",
 			"cwd": "${workspaceFolder}",
 			"env": {},
 			"runtimeExecutable": "/home/harry/.deno/bin/deno",

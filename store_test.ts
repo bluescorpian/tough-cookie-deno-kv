@@ -1,6 +1,6 @@
-import { assertEquals } from "@std/assert";
+import {  assertEquals } from "@std/assert";
 import { DenoKVStore } from "./store.ts";
-import { Cookie } from "tough-cookie";
+import { Cookie, CookieJar } from "tough-cookie";
 
 const PREFIX = ["cookies"];
 const COOKIES = [
@@ -127,3 +127,18 @@ Deno.test("updateCookie", async () => {
 	const cookie = await store.findCookie("example.com", "/path", "foo");
 	assertEquals(cookie?.toJSON(), newCookie.toJSON());
 });
+
+Deno.test("cookieJar", async () => {
+	using kv = await createKV();
+	const store = createStore(kv);
+	await createTestCookies(store);
+	const cookieJar = new CookieJar(store)
+
+	const cookies = await cookieJar.getCookies("https://example.com/path");
+
+	assertEquals(cookies.length, 2);
+
+	await cookieJar.setCookie("newKey=newValue; Domain=example.com; Path=/path; Max-Age=3600; Secure; HttpOnly", "https://example.com/path");
+	const newCookies = await cookieJar.getCookies("https://example.com/path");
+	assertEquals(newCookies.length, 3);
+})

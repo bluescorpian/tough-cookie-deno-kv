@@ -1,6 +1,6 @@
 {
 	"name": "@bluescorpian/tough-cookie-deno-kv-store",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"exports": "./store.ts",
 	"tasks": {
 		"dev": "deno test --unstable-kv --watch"
