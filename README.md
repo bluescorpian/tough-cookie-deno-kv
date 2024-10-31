@@ -9,7 +9,7 @@
 
 ## Installation
 
-To install `tough-cookie-deno-kv`, use the following command:
+To install `tough-cookie-deno-kv-store`, use the following command:
 
 ```sh
 deno add jsr:@bluescorpian/tough-cookie-deno-kv-store
